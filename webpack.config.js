@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const  HtmlWebpackPlugin = require('html-webpack-plugin');
+const  CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /*
  * We've enabled UglifyJSPlugin for you! This minifies your app
@@ -67,5 +68,8 @@ module.exports = {
 							title: 'Darcaster',
 							filename: 'index.html',
 							template: './src/index.html'
-						})]
+						}),
+					new CopyWebpackPlugin([
+						{from: './src/images', to: './images'}
+					])]
 };
