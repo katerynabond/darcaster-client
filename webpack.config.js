@@ -58,6 +58,14 @@ module.exports = {
 					],
 					fallback: 'style-loader'
 				})
+			},
+
+			{
+				test: /\.(jpg|png|svg)$/,
+				loader: 'file-loader',
+				options: {
+					name: './images/[name].[hash][ext]'
+				}
 			}
 		]
 	},
@@ -69,7 +77,8 @@ module.exports = {
 							filename: 'index.html',
 							template: './src/index.html'
 						}),
-					new CopyWebpackPlugin([
-						{from: './src/images', to: './images'}
-					])]
+					// new CopyWebpackPlugin([
+					// 	{from: './src/images', to: './images'}
+					// ])
+				]
 };

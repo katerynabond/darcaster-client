@@ -1,6 +1,7 @@
 const angular = require('angular');
 const weatherData = require('../mocks/weather.json');
 
+
 //create our application
 angular.module('darcaster-client', []); //setter syntax
 
