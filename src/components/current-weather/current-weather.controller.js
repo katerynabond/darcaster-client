@@ -1,17 +1,18 @@
 const clearDay = require('../../images/clear-day.png');
-MainController.$inject = ['WeatherService'];
 
-function MainController(weather){
+CurrentWeatherController.$inject = ['WeatherService']; //magic for us
 
-  this.message = 'hello from angular';
+function CurrentWeatherController(weather){
+  this.lat = 0;
+  this.lon = 0;
   this.imageLookup = {
     'clear-day': clearDay
-  }
-
-      weather.getCurrentWeather(29, -81)
-              .then(currentWeather => this.weatherData = currentWeather);
-
+  };
+  //functions
+  this.search = function search(){
+    weather.getCurrentWeather(this.lat, this.lon)
+           .then(currentWeather => this.weatherData = currentWeather); //is a promise
+  };
 
 }
-
-module.exports = MainController;
+module.exports = CurrentWeatherController;
