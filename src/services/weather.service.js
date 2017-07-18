@@ -6,7 +6,9 @@ function WeatherService($http){
   return{
     //label    function name
     getCurrentWeather: getCurrently,
-    getCurrentWeatherByLocation: getCurrentlyByLocation
+    getCurrentWeatherByLocation: getCurrentlyByLocation,
+    getHourlyWeather: getHourly,
+    getHourlyWeatherByLocation: getHourlyByLocation
 
   };
 function getCurrently(lat, lon){
@@ -22,6 +24,22 @@ function getCurrentlyByLocation(location){
   return $http.get(url)
               .then(response => {
                 return response.data.currently;
+              });
+}
+
+function getHourly(lat, lon){
+  const url = `${baseUrl}${lat},${lon}`;
+  return $http.get(url)
+              .then(response => {
+                return response.data.hourly;
+              });
+}
+
+function getHourlyByLocation(location){
+  const url = `${baseUrl}location/${location}`;
+  return $http.get(url)
+              .then(response => {
+                return response.data.hourly;
               });
 }
 
